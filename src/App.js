@@ -9,34 +9,31 @@ class App extends Component {
     const height = +svg.attr("height"); // + sign converts string to number
     const width = +svg.attr("width");
 
-    const circle = svg
+    const g = svg
+      .append("g")
+      .attr("transform", `translate(${width / 2},${height / 2})`);
+
+    const circle = g
       .append("circle")
       .attr("r", height / 2 - 50)
-      .attr("cx", width / 2)
-      .attr("cy", height / 2)
       .attr("fill", "yellow")
       .attr("stroke", "black");
 
     const eyeSpacing = 100;
     const eyeYOffset = -70;
+    const eyeRadius = 40;
+    const eyeG = g.append("g").attr("transform", `translate(0,${eyeYOffset})`);
 
-    const leftEye = svg
+    const leftEye = eyeG
       .append("circle")
-      .attr("r", 30)
-      .attr("cx", width / 2 - eyeSpacing)
-      .attr("cy", height / 2 + eyeYOffset)
-      .attr("fill", "black");
+      .attr("r", eyeRadius)
+      .attr("cx", -eyeSpacing);
 
-    const righttEye = svg
+    const righttEye = eyeG
       .append("circle")
-      .attr("r", 30)
-      .attr("cx", width / 2 + eyeSpacing)
-      .attr("cy", height / 2 + eyeYOffset)
-      .attr("fill", "black");
+      .attr("r", eyeRadius)
+      .attr("cx", eyeSpacing);
 
-    const g = svg
-      .append("g")
-      .attr("transform", `translate(${width / 2},${height / 2})`);
     const mouth = g.append("path").attr(
       "d",
       d3
