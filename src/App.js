@@ -50,22 +50,28 @@ class App extends Component {
       .attr("width", eyeBrowWidth)
       .attr("height", eyeBrowHeight);
 
+    const righttEye = eyeG
+      .append("circle")
+      .attr("r", eyeRadius)
+      .attr("cx", eyeSpacing);
+
     const rightEyebrow = eyeG
       .append("rect")
       .attr("x", eyeSpacing - eyeBrowWidth / 2)
       .attr("y", eyeBrowYOffset)
       .attr("width", eyeBrowWidth)
-      .attr("height", eyeBrowHeight);
-
-    const righttEye = eyeG
-      .append("circle")
-      .attr("r", eyeRadius)
-      .attr("cx", eyeSpacing);
+      .attr("height", eyeBrowHeight)
+      .transition()
+      .duration(1000)
+      .attr("y", eyeBrowYOffset - 40)
+      .transition()
+      .duration(2000)
+      .attr("y", eyeBrowYOffset);
   }
   render() {
     return (
       <React.Fragment>
-        <svg style={{ background: "#83ad7f" }} width="800" height="500"></svg>
+        <svg style={{ background: "#83ad7f" }} width="960" height="600"></svg>
       </React.Fragment>
     );
   }
