@@ -22,17 +22,9 @@ class App extends Component {
     const eyeSpacing = 100;
     const eyeYOffset = -70;
     const eyeRadius = 40;
-    const eyeG = g.append("g").attr("transform", `translate(0,${eyeYOffset})`);
-
-    const leftEye = eyeG
-      .append("circle")
-      .attr("r", eyeRadius)
-      .attr("cx", -eyeSpacing);
-
-    const righttEye = eyeG
-      .append("circle")
-      .attr("r", eyeRadius)
-      .attr("cx", eyeSpacing);
+    const eyeBrowWidth = 70;
+    const eyeBrowHeight = 15;
+    const eyeBrowYOffset = -70;
 
     const mouth = g.append("path").attr(
       "d",
@@ -43,6 +35,32 @@ class App extends Component {
         .startAngle(Math.PI / 2)
         .endAngle((Math.PI * 3) / 2)
     );
+
+    const eyeG = g.append("g").attr("transform", `translate(0,${eyeYOffset})`);
+
+    const leftEye = eyeG
+      .append("circle")
+      .attr("r", eyeRadius)
+      .attr("cx", -eyeSpacing);
+
+    const leftEyebrow = eyeG
+      .append("rect")
+      .attr("x", -eyeSpacing - eyeBrowWidth / 2)
+      .attr("y", eyeBrowYOffset)
+      .attr("width", eyeBrowWidth)
+      .attr("height", eyeBrowHeight);
+
+    const rightEyebrow = eyeG
+      .append("rect")
+      .attr("x", eyeSpacing - eyeBrowWidth / 2)
+      .attr("y", eyeBrowYOffset)
+      .attr("width", eyeBrowWidth)
+      .attr("height", eyeBrowHeight);
+
+    const righttEye = eyeG
+      .append("circle")
+      .attr("r", eyeRadius)
+      .attr("cx", eyeSpacing);
   }
   render() {
     return (
